@@ -13,8 +13,8 @@
  */
 open class Vehiculo(
     val nombre: String,
-    protected val marca: String,
-    protected val modelo: String,
+    val marca: String,
+    val modelo: String,
     capacidadCombustible: Float,
     combustibleActual: Float,
     var kilometrosActuales: Float

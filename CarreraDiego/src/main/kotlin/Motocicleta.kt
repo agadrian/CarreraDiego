@@ -4,7 +4,7 @@
  * @property cilindrada La cilindrada de la motocicleta.
  * @constructor Crea una motocicleta con los parámetros especificados, heredando propiedades y funcionalidades de [Vehiculo].
  */
-class Motocicleta(
+open class Motocicleta(
     nombre: String,
     marca: String,
     modelo: String,
