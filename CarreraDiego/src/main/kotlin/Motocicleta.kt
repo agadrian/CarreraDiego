@@ -11,16 +11,20 @@ open class Motocicleta(
     capacidadCombustible: Float,
     combustibleActual: Float,
     kilometrosActuales: Float,
-    private val cilindrada: Int
+    protected val cilindrada: Int
 ) : Vehiculo(nombre, marca, modelo, capacidadCombustible, combustibleActual, kilometrosActuales) {
 
+
     init {
-        require(cilindrada in 125..1000) { "Una motocicleta debe tener entre 125 y 100 cc." }
+        require(cilindrada in listaCilindrada) { "Una motocicleta debe tener una de estas cilindradas: 125, 250, 400, 500, 750, 900, 1000" }
     }
+
+
 
     companion object {
         const val KM_POR_LITRO = 20.0f // 20 KM por litro.
         const val KM_POR_CABALLITO = 6.5f // Gasto equivalente a 6,5 km.
+        val listaCilindrada = listOf(125, 250, 400, 500, 750, 900, 1000)
     }
 
     /**

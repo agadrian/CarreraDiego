@@ -40,7 +40,7 @@ fun main() {
 
 
 
-    val vehiculos = listOf(
+    val vehiculos = mutableListOf(
         Automovil("aurora", "Seat", "Panda", 50f, 50f * 0.1f, 0f, true),
         Automovil("Boreal m8", "BMW", "M8", 80f, 80f * 0.1f, 0f, false),
         Motocicleta("Céfiro", "Derbi", "Motoreta", 15f, 15f * 0.1f, 0f, 500),
@@ -114,10 +114,27 @@ fun main() {
             val nombreVeh = pedirNombreVeh()
             val numRandom = (1..4).random()
             val vehiculoRandom = when (numRandom) {
-                1 -> generarAutomovil(nombreVeh)
-                2 -> generarMotocicleta(nombreVeh)
-                3 -> generarCamion(nombreVeh)
-                else -> generarQuad(nombreVeh)
+                1 -> {
+                    // Automovil
+                    val capacidad = (30..60).random().toFloat()
+                    val numRand = (20..100).random()
+                    val combustible = capacidad * (numRand.toFloat() / 100)
+
+                    Automovil(nombreVeh, listaMarcas.random(), listaModelos.random(), capacidad, combustible, 0.0f, false)
+
+                }
+                2 -> {
+                    // Motocicleta
+                    Motocicleta()
+                }
+                3 -> {
+                    // Camion
+                    Camion()
+                }
+                else -> {
+                    // Quad
+                    Quad()
+                }
             }
         }
     }

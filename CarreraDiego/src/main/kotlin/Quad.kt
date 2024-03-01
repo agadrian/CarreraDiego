@@ -1,16 +1,15 @@
+import kotlin.random.Random
+
 class Quad(
     nombre: String,
-    marca: String = "",
-    modelo: String = "",
-    capacidadCombustible: Float,
-    combustibleActual: Float,
-    kilometrosActuales: Float,
-    cilindrada: Int,
-    tipo: TipoQuad
-) : Motocicleta(nombre, marca, modelo, capacidadCombustible, combustibleActual, kilometrosActuales, cilindrada)  {
+    tipo: TipoQuad,
+    cilindrada: Int
+) : Motocicleta(nombre, "", "", 0f, 0f, 0f, cilindrada)  {
 
     init {
         require(tipo in TipoQuad.values()){"El tipo de quad debe ser: ${TipoQuad.values().joinToString()}"}
+        require(cilindrada in listaCilindrada) { "Una motocicleta debe tener una de estas cilindradas: 125, 250, 400, 500, 750, 900, 1000" }
+
     }
 
     companion object{
@@ -20,10 +19,6 @@ class Quad(
     override fun calcularAutonomia(): Float {
         return (super.calcularAutonomia() / 2)
     }
-
-
-
-
 
 
 

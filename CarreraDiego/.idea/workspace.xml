@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e17ec13a-2823-4458-8d0d-cce6400d8cd7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Automovil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Automovil.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Motocicleta.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Motocicleta.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Vehiculo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Vehiculo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dam1_Carrera_practica3-master/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dam1_Carrera_practica3-master/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Quad.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Quad.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
