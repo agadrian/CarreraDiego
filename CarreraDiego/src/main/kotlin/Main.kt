@@ -76,7 +76,7 @@ fun main() {
 
 
 
-    fun pedirParticipante(): Int{
+    fun pedirParticipantes(): Int{
         var numPart: Int
         print("Introduce numero de participantes -> ")
         do {
@@ -107,36 +107,57 @@ fun main() {
     /**
      * Genera un vehiculo random
      */
-    fun generarVehiculoRandom(numVehiculos: Int){
+    fun generarVehiculoRandom(){
 
-        for (i in 1..numVehiculos){
+        val nombreVeh = pedirNombreVeh()
+        val numRandom = (1..4).random()
+        val vehiculoRandom = when (numRandom) {
+            // TODO: HACER EL FLOAT SIN DECIMALES
+            1 -> {
+                // Automovil
+                val capacidad = (30..60).random().toFloat()
+                val numRand = (20..100).random()
+                val combustible = capacidad * (numRand.toFloat() / 100)
 
-            val nombreVeh = pedirNombreVeh()
-            val numRandom = (1..4).random()
-            val vehiculoRandom = when (numRandom) {
-                1 -> {
-                    // Automovil
-                    val capacidad = (30..60).random().toFloat()
-                    val numRand = (20..100).random()
-                    val combustible = capacidad * (numRand.toFloat() / 100)
+                Automovil(nombreVeh, listaMarcas.random(), listaModelos.random(), capacidad, combustible, 0.0f, false)
 
-                    Automovil(nombreVeh, listaMarcas.random(), listaModelos.random(), capacidad, combustible, 0.0f, false)
+            }
+            2 -> {
+                //TODO: LISTA CILINDRADA HACERLO CON ENUM CLASS
+                // Motocicleta
+                val capacidad = (15..30).random().toFloat()
+                val numRand = (20..100).random()
+                val combustible = capacidad * (numRand.toFloat() / 100)
 
-                }
-                2 -> {
-                    // Motocicleta
-                    Motocicleta()
-                }
-                3 -> {
-                    // Camion
-                    Camion()
-                }
-                else -> {
-                    // Quad
-                    Quad()
-                }
+                Motocicleta(nombreVeh, listaMarcas.random(), listaModelos.random(), capacidad, combustible, 0.0f, Motocicleta.listaCilindrada.random())
+            }
+            3 -> {
+                // Camion
+                val capacidad = (90..150).random().toFloat()
+                val numRand = (20..100).random()
+                val combustible = capacidad * (numRand.toFloat() / 100)
+
+                Camion(nombreVeh, capacidad, combustible, 0.0f, false, (1000..10000).random().toFloat())
+            }
+            else -> {
+                // Quad
+                val capacidad = (20..40).random().toFloat()
+                val numRand = (20..100).random()
+                val combustible = capacidad * (numRand.toFloat() / 100)
+
+                Quad(nombreVeh, TipoQuad.entries.random(),capacidad, combustible, Quad.listaCilindrada.random())
             }
         }
+
+        vehiculos.add(vehiculoRandom)
+    }
+
+    val numeroParticipantes = pedirParticipantes()
+
+    // TODO: CONTROLAR QUE SALTE UN REQUIRE Y QUE VUELVA A PEDIR NOMBRE Y VALORES
+
+    for (i in 1..numeroParticipantes){
+        generarVehiculoRandom()
     }
 
 

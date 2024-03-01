@@ -1,13 +1,11 @@
 class Camion(
     nombre: String,
-    marca: String = "",
-    modelo: String = "",
     capacidadCombustible: Float,
     combustibleActual: Float,
     kilometrosActuales: Float,
     esHibrido: Boolean,
     private val peso: Float
-) : Automovil(nombre, marca, modelo, capacidadCombustible, combustibleActual, kilometrosActuales, esHibrido) {
+) : Automovil(nombre, "", "", capacidadCombustible, combustibleActual, kilometrosActuales, esHibrido) {
 
 
 
