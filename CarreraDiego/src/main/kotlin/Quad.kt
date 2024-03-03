@@ -19,7 +19,6 @@ class Quad(
     }
 
     companion object{
-        const val KM_LITRO = 2
         val listaCilindrada = listOf(125, 250, 400, 500, 750, 900, 1000)
     }
 
@@ -27,6 +26,10 @@ class Quad(
         return (super.calcularAutonomia() / 2)
     }
 
+
+    override fun toString(): String {
+        return "Quad(nombre=$nombre, marca=$marca, modelo=$modelo, capacidadCombustible=$capacidadCombustible, combustibleActual=$combustibleActual, kilometrosActuales=$kilometrosActuales, cilindrada=$cilindrada)"
+    }
 
 
 }

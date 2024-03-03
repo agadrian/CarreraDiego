@@ -20,6 +20,8 @@ open class Vehiculo(
     var kilometrosActuales: Float
 ) {
 
+    private var contRepostajes = 0
+
     protected val capacidadCombustible = capacidadCombustible.redondear(2)
     var combustibleActual = combustibleActual.redondear(2)
         set(value) {
@@ -63,7 +65,7 @@ open class Vehiculo(
      * @return Una cadena de texto que representa la información del vehículo.
      */
     fun obtenerInformacion(): String {
-        return calcularAutonomia().toString()
+        return ("${this.nombre}(km = ${this.kilometrosActuales}, combustible = ${this.combustibleActual} L)")
     }
 
     /**
@@ -116,6 +118,13 @@ open class Vehiculo(
         else
             combustibleActual = minOf(capacidadCombustible, combustibleActual + cantidadARepostar)
 
+        contRepostajes++
         return combustibleActual - combustiblePrevio
     }
+
+    /**
+     * Obtiene el numero de veces que se ha repostado combustible.
+     * @return Int - El numero de repostajes realizados.
+     */
+    fun obtenerContRepostaje() = contRepostajes
 }

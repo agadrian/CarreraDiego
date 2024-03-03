@@ -26,6 +26,10 @@ class Camion(
     }
 
 
+    override fun toString(): String {
+        return "Camion(nombre=$nombre, marca=$marca, modelo=$modelo, capacidadCombustible=$capacidadCombustible, combustibleActual=$combustibleActual, kilometrosActuales=$kilometrosActuales, esElectrico=$esHibrido)"
+    }
+
 
 
 

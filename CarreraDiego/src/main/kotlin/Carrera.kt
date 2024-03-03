@@ -16,6 +16,7 @@ class Carrera(
     private val historialAcciones = mutableMapOf<String, MutableList<String>>()
     private var estadoCarrera = false // Indica si la carrera está en curso o ha finalizado.
     private val posiciones = mutableMapOf<String, Float>()
+    private var numRonda = 0
 
     init {
         require(distanciaTotal >= 1000) { "La distancia total de la carrera debe ser al menos 1000 km." }
@@ -77,8 +78,9 @@ class Carrera(
         estadoCarrera = true // Indica que la carrera está en curso.
         while (estadoCarrera) {
 
-            Thread.sleep(100)
-            print(".")
+            //Thread.sleep(100)
+            //print(".")
+
 
             val vehiculoSeleccionado = seleccionaVehiculoQueAvanzara()
             avanzarVehiculo(vehiculoSeleccionado)
@@ -90,8 +92,25 @@ class Carrera(
                 println("\n¡¡¡ENHORABUENA ${vehiculoGanador.nombre}!!!\n")
             }
 
+            numRonda++
+            if (numRonda % 3 == 0) mostrarClasificacionParcial(numRonda)
+
         }
     }
+
+    /**
+     * Muestra a partir de los resultados actuales, la claseificacion por tramos de 3 rondas
+     */
+    fun mostrarClasificacionParcial(numeroRonda: Int){
+        println("*** CLASIFICACIÓN PARCIAL (ronda ${numeroRonda}) ***")
+        val resultados = obtenerResultados()
+
+        for ((cont, resultado) in resultados.withIndex()){
+            println("${cont + 1}.- ${resultado.vehiculo.obtenerInformacion()}")
+        }
+        println()
+    }
+
 
     /**
      * Selecciona aleatoriamente un vehículo participante para avanzar en la carrera. Este método se utiliza dentro
@@ -257,23 +276,18 @@ class Carrera(
     fun obtenerResultados(): List<ResultadoCarrera> {
         val resultados = mutableListOf<ResultadoCarrera>()
 
-        posiciones.toList().sortedByDescending { it.second }.forEachIndexed { posicion, (nombre, kilometraje) ->
-            val vehiculo = participantes.find { it.nombre == nombre }
-            val paradasRepostaje = historialAcciones[nombre]?.count { it.contains("Repostaje") } ?: 0
-            val historial = historialAcciones[nombre] ?: emptyList()
+        val participantesOrdenados = participantes.sortedByDescending { it.kilometrosActuales }
 
-            if (vehiculo != null)
-                resultados.add(
-                    ResultadoCarrera(
-                        vehiculo,
-                        posicion + 1,
-                        kilometraje,
-                        paradasRepostaje,
-                        historial
-                    )
-                )
+        for ((index, vehiculo) in participantesOrdenados.withIndex()) {
+            val paradasRepostaje = vehiculo.obtenerContRepostaje()
+            val historialAcc = historialAcciones[vehiculo.nombre] ?: listOf()
+            if (vehiculo.kilometrosActuales > 1000f) vehiculo.kilometrosActuales = 1000f
+            resultados.add(ResultadoCarrera(vehiculo, index + 1, vehiculo.kilometrosActuales, paradasRepostaje, historialAcc))
         }
         return resultados
+
     }
+
+
 
 }

@@ -18,9 +18,10 @@ fun Float.redondear(posiciones: Int): Float {
 
 /**
  * Crear metodo capitalizar para los strings
+ * Capitaliza la primera letra de cada palabra en el string.
  */
 fun String.capitalizar(): String {
-    return this.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+    return this.lowercase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
 }
 
 /**
@@ -32,61 +33,66 @@ fun String.espaciosCapit(): String{
 }
 
 /**
- * Punto de entrada del programa. Crea una lista de vehículos y una carrera, e inicia la carrera mostrando
- * los resultados al finalizar.
+ * Punto de entrada del programa.
  */
 fun main() {
 
-
-
-
-    val vehiculos = mutableListOf(
-        Automovil("aurora", "Seat", "Panda", 50f, 50f * 0.1f, 0f, true),
-        Automovil("Boreal m8", "BMW", "M8", 80f, 80f * 0.1f, 0f, false),
-        Motocicleta("Céfiro", "Derbi", "Motoreta", 15f, 15f * 0.1f, 0f, 500),
-        Automovil("Dinamo", "Cintroen", "Sor", 70f, 70f * 0.1f, 0f, true),
-        Automovil("eclipse negro", "Renault", "Espacio", 60f, 60f * 0.1f, 0f, false),
-        Motocicleta("Fénix", "Honda", "Vital", 20f, 20f * 0.1f, 0f, 250)
-    )
-
     /*
-    val carrera = Carrera("Gran Carrera de Filigranas", 1000f, vehiculos)
+        val vehiculos = mutableListOf(
+            Automovil("aurora", "Seat", "Panda", 50f, 50f * 0.1f, 0f, true),
+            Automovil("Boreal m8", "BMW", "M8", 80f, 80f * 0.1f, 0f, false),
+            Motocicleta("Céfiro", "Derbi", "Motoreta", 15f, 15f * 0.1f, 0f, 500),
+            Automovil("Dinamo", "Cintroen", "Sor", 70f, 70f * 0.1f, 0f, true),
+            Automovil("eclipse negro", "Renault", "Espacio", 60f, 60f * 0.1f, 0f, false),
+            Motocicleta("Fénix", "Honda", "Vital", 20f, 20f * 0.1f, 0f, 250)
+        )
 
-    println("\n*** ${carrera.nombreCarrera} ***\n")
-    carrera.iniciarCarrera()
 
-    val resultados = carrera.obtenerResultados()
+        val carrera = Carrera("Gran Carrera de Filigranas", 1000f, vehiculos)
 
-    println("* Clasificación:\n")
-    resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre} (${it.vehiculo.kilometrosActuales} kms)") }
+        println("\n*** ${carrera.nombreCarrera} ***\n")
+        carrera.iniciarCarrera()
 
-    println("\n" + resultados.joinToString("\n") { it.toString() })
+        val resultados = carrera.obtenerResultados()
 
-    println("\n* Historial Detallado:\n")
-    resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre}\n${it.historialAcciones.joinToString("\n")}\n") }
+        println("* Clasificación:\n")
+        resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre} (${it.vehiculo.kilometrosActuales} kms)") }
 
-    */
+        println("\n" + resultados.joinToString("\n") { it.toString() })
 
+        println("\n* Historial Detallado:\n")
+        resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre}\n${it.historialAcciones.joinToString("\n")}\n") }
+
+        */
+
+    val vehiculos: MutableList<Vehiculo> = mutableListOf()
 
 
     val listaMarcas = listOf("Toyota", "Ford", "Chevrolet", "Honda", "Volkswagen", "BMW", "Mercedes-Benz", "Audi")
     val listaModelos = listOf("Volador", "Galopante", "Nadador", "Pisahuevos", "Estropeao")
-    var listaNombres = mutableListOf("") // Se podria haber hecho con mutableSet y cambiando la funcion para comprobar y añadir
+    val listaNombres = mutableListOf("") // Se podria haber hecho con mutableSet y cambiando la funcion para comprobar y añadir
 
 
 
-
+    /**
+     * Pide al usuario ingresar el número de participantes, hasta que sea uno valido.
+     * @return El número de participantes ingresado por el usuario.
+     */
     fun pedirParticipantes(): Int{
         var numPart: Int
         print("Introduce numero de participantes -> ")
         do {
             numPart = readln().toIntOrNull() ?:0
-            if (numPart <= 0) print("Introduce entero positivo -> ")
+            if (numPart <= 0) print("Error - Introduce entero positivo -> ")
         } while (numPart <= 0)
         return numPart
     }
 
 
+    /**
+     * Pide al usuario ingresar el nombre del vehículo, hasta que introduzca uno valido
+     * @return El nombre del vehículo ingresado por el usuario.
+     */
     fun pedirNombreVeh(): String{
         var nombre:String
         print("Introduce nombre vehiculo -> ")
@@ -105,14 +111,13 @@ fun main() {
     }
 
     /**
-     * Genera un vehiculo random
-     */
+    * Genera un vehículo aleatorio y lo agrega a la lista de vehículos.
+    */
     fun generarVehiculoRandom(){
 
         val nombreVeh = pedirNombreVeh()
         val numRandom = (1..4).random()
         val vehiculoRandom = when (numRandom) {
-            // TODO: HACER EL FLOAT SIN DECIMALES
             1 -> {
                 // Automovil
                 val capacidad = (30..60).random().toFloat()
@@ -123,7 +128,6 @@ fun main() {
 
             }
             2 -> {
-                //TODO: LISTA CILINDRADA HACERLO CON ENUM CLASS
                 // Motocicleta
                 val capacidad = (15..30).random().toFloat()
                 val numRand = (20..100).random()
@@ -150,15 +154,38 @@ fun main() {
         }
 
         vehiculos.add(vehiculoRandom)
+
+        println("Te ha tocado: $vehiculoRandom")
     }
 
+    // Se pide el numero de participantes
     val numeroParticipantes = pedirParticipantes()
 
-    // TODO: CONTROLAR QUE SALTE UN REQUIRE Y QUE VUELVA A PEDIR NOMBRE Y VALORES
-
+    // Iterar tantas veces como numero de particiapntes se introduzcan
     for (i in 1..numeroParticipantes){
         generarVehiculoRandom()
     }
+
+
+    /////////////
+    // PARTE 2 //
+    /////////////
+
+    val carrera = Carrera("Gran Carrera de Filigranas", 1000f, vehiculos)
+
+    println("\n*** ${carrera.nombreCarrera} ***\n")
+    carrera.iniciarCarrera()
+
+    val resultados = carrera.obtenerResultados()
+
+    println("* Clasificación:\n")
+    resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre} (${it.vehiculo.kilometrosActuales} kms)") }
+
+    println("\n" + resultados.joinToString("\n") { it.toString() })
+
+    println("\n* Historial Detallado:\n")
+    resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre}\n${it.historialAcciones.joinToString("\n")}\n") }
+
 
 
 }
