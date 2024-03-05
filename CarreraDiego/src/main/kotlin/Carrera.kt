@@ -237,7 +237,7 @@ class Carrera(
     private fun realizarFiligrana(vehiculo: Vehiculo) {
         // Lógica para realizar filigranas de motociletas y automovil y registrarlas. Se hará o no aleatoriamente.
         if (comprobarSiTocaHacerFiligrana()) {
-            val retraso = (10..50).random().toFloat()
+            val retraso = (5..8).random().toFloat()
             val combustibleRestante: Float
 
             if (vehiculo is Automovil) {
