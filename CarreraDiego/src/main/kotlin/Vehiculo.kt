@@ -20,6 +20,18 @@ open class Vehiculo(
     var kilometrosActuales: Float
 ) {
 
+   // Contador de rondas de cada vehiculo (private set para que no sea modificado desde fuera, pero si poder obtener el vaor)
+    var numRondas = 0
+        private set
+
+    /**
+     * Incrementa el numero de rondas de cada vehiculo
+     */
+    fun avanzarRonda(){
+        numRondas++
+    }
+
+
     private var contRepostajes = 0
 
     protected val capacidadCombustible = capacidadCombustible.redondear(2)

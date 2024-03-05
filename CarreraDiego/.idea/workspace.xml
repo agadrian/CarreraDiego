@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e17ec13a-2823-4458-8d0d-cce6400d8cd7" name="Changes" comment="">
+    <list default="true" id="e17ec13a-2823-4458-8d0d-cce6400d8cd7" name="Changes" comment="Avances. Falta terminar algun punto de la parte 2.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Camion.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Camion.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Carrera.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Carrera.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Quad.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Quad.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Vehiculo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Vehiculo.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +39,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Kotlin.MainKt.executor": "Run",
+    "Kotlin.MainKt.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -66,21 +64,28 @@
       <option name="presentableId" value="Default" />
       <updated>1709237733795</updated>
     </task>
+    <task id="LOCAL-00001" summary="Avances. Falta terminar algun punto de la parte 2.">
+      <option name="closed" value="true" />
+      <created>1709507129752</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1709507129752</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Avances. Falta terminar algun punto de la parte 2." />
+    <option name="LAST_COMMIT_MESSAGE" value="Avances. Falta terminar algun punto de la parte 2." />
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-function">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/Carrera.kt</url>
-          <line>274</line>
-          <properties class="Carrera" method="obtenerResultados">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JetRunConfigurationType">
+        <watch expression="vehiculoSeleccionado.numRondas" language="kotlin" />
+        <watch expression="rondas" language="kotlin" />
+        <watch expression="vehiculoSeleccionado.kilometrosActuales" language="kotlin" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

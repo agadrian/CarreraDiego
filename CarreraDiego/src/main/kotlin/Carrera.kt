@@ -16,7 +16,8 @@ class Carrera(
     private val historialAcciones = mutableMapOf<String, MutableList<String>>()
     private var estadoCarrera = false // Indica si la carrera está en curso o ha finalizado.
     private val posiciones = mutableMapOf<String, Float>()
-    private var numRonda = 0
+    private var rondas = 0
+
 
     init {
         require(distanciaTotal >= 1000) { "La distancia total de la carrera debe ser al menos 1000 km." }
@@ -75,33 +76,52 @@ class Carrera(
     fun iniciarCarrera() {
         println("¡Comienza la carrera!")
 
-        estadoCarrera = true // Indica que la carrera está en curso.
-        while (estadoCarrera) {
 
-            //Thread.sleep(100)
-            //print(".")
-
+        while (!todosFinalizados()) {
 
             val vehiculoSeleccionado = seleccionaVehiculoQueAvanzara()
             avanzarVehiculo(vehiculoSeleccionado)
 
-            val vehiculoGanador = determinarGanador()
-            if (vehiculoGanador != null) {
-                estadoCarrera = false
-                println("\n¡Carrera finalizada!")
-                println("\n¡¡¡ENHORABUENA ${vehiculoGanador.nombre}!!!\n")
+            if (rondas % 1 == 0) mostrarClasificacionParcial(rondas)
+
+            for (vehiculo in participantes){
+                if (vehiculo.kilometrosActuales < distanciaTotal) vehiculo.avanzarRonda()
             }
 
-            numRonda++
-            if (numRonda % 3 == 0) mostrarClasificacionParcial(numRonda)
-
+            rondas++
         }
+
+        mostrarClasificacionFinal()
     }
+
+
+    /**
+     * Comprueba que todos los participantes hayan llegado a la distancia final comprobando los valores del set de posiciones
+     * @return True si han llegado todos
+     *          False si no han llegado todos
+     */
+    private fun todosFinalizados(): Boolean {
+        return posiciones.values.all { it >= distanciaTotal }
+    }
+
+
+    /**
+     * Obtiene los resultados de la carrera y los muestra junto al numero de rondas de cada vehiculo
+     */
+    private fun mostrarClasificacionFinal() {
+        println("*** CLASIFICACIÓN FINAL ***")
+        val resultados = obtenerResultados()
+
+        resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre} (${it.vehiculo.kilometrosActuales} kms, Rondas: ${it.vehiculo.numRondas})")
+        }
+        println()
+    }
+
 
     /**
      * Muestra a partir de los resultados actuales, la claseificacion por tramos de 3 rondas
      */
-    fun mostrarClasificacionParcial(numeroRonda: Int){
+    private fun mostrarClasificacionParcial(numeroRonda: Int){
         println("*** CLASIFICACIÓN PARCIAL (ronda ${numeroRonda}) ***")
         val resultados = obtenerResultados()
 

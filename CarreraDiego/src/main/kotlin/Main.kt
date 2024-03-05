@@ -178,13 +178,14 @@ fun main() {
 
     val resultados = carrera.obtenerResultados()
 
-    println("* Clasificación:\n")
-    resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre} (${it.vehiculo.kilometrosActuales} kms)") }
+    //println("* Clasificación:\n")
+    //resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre} (${it.vehiculo.kilometrosActuales} kms)") }
 
     println("\n" + resultados.joinToString("\n") { it.toString() })
 
     println("\n* Historial Detallado:\n")
     resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre}\n${it.historialAcciones.joinToString("\n")}\n") }
+
 
 
 
