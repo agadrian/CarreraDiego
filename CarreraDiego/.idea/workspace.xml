@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e17ec13a-2823-4458-8d0d-cce6400d8cd7" name="Changes" comment="Avances y correcion bug rondas totales de cada vehiculo. Falta modificar numero filigranas y corregir algun bug">
+    <list default="true" id="e17ec13a-2823-4458-8d0d-cce6400d8cd7" name="Changes" comment="Olvido cambio numero.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Carrera.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Carrera.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Vehiculo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Vehiculo.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +37,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Kotlin.MainKt.executor": "Run",
+    "Kotlin.MainKt.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -80,13 +78,22 @@
       <option name="project" value="LOCAL" />
       <updated>1709639665473</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Olvido cambio numero.">
+      <option name="closed" value="true" />
+      <created>1709639838602</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709639838602</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Avances. Falta terminar algun punto de la parte 2." />
     <MESSAGE value="Avances y correcion bug rondas totales de cada vehiculo. Falta modificar numero filigranas y corregir algun bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Avances y correcion bug rondas totales de cada vehiculo. Falta modificar numero filigranas y corregir algun bug" />
+    <MESSAGE value="Olvido cambio numero." />
+    <option name="LAST_COMMIT_MESSAGE" value="Olvido cambio numero." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

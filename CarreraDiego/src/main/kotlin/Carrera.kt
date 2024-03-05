@@ -186,7 +186,7 @@ class Carrera(
 
             avanzarTramo(vehiculo, distanciaDeTramo)
             distanciaRestanteEnAvance -= distanciaDeTramo
-            repeat(2) { realizarFiligrana(vehiculo) }
+            repeat(3) { realizarFiligrana(vehiculo) }
         }
 
         registrarAccion(vehiculo.nombre, "Finaliza viaje: Total Recorrido $distanciaTotalEnAvance kms (${vehiculo.kilometrosActuales} kms y ${vehiculo.combustibleActual} L actuales)")
@@ -230,23 +230,41 @@ class Carrera(
     /**
      * Intenta que un vehículo realice una filigrana durante su avance en la carrera. La filigrana
      * (derrape o caballito) se realiza basada en una probabilidad aleatoria y consume combustible adicional.
+     * Retrasamos el vehiculo una cantidad de km de manera aleatoria
      *
      * @param vehiculo El [Vehiculo] que intentará realizar la filigrana.
      */
     private fun realizarFiligrana(vehiculo: Vehiculo) {
         // Lógica para realizar filigranas de motociletas y automovil y registrarlas. Se hará o no aleatoriamente.
         if (comprobarSiTocaHacerFiligrana()) {
+            val retraso = (10..50).random().toFloat()
             val combustibleRestante: Float
 
             if (vehiculo is Automovil) {
                 combustibleRestante = vehiculo.realizaDerrape()
-                registrarAccion(vehiculo.nombre, "Derrape: Combustible restante $combustibleRestante L.")
+
+                if (vehiculo.kilometrosActuales - retraso < 0f) {
+                    vehiculo.kilometrosActuales = 0f
+                    registrarAccion(vehiculo.nombre, "Derrape: Combustible restante $combustibleRestante L. Se ha retrasado $retraso kms. Kms establecidos en 0")
+                } else {
+                    vehiculo.kilometrosActuales -= retraso
+                    registrarAccion(vehiculo.nombre, "Derrape: Combustible restante $combustibleRestante L. Se ha retrasado $retraso kms.")
+                }
+
             } else if (vehiculo is Motocicleta) {
                 combustibleRestante = vehiculo.realizaCaballito()
-                registrarAccion(vehiculo.nombre, "Caballito: Combustible restante $combustibleRestante L")
+
+                if (vehiculo.kilometrosActuales - retraso < 0f) {
+                    vehiculo.kilometrosActuales = 0f
+                    registrarAccion(vehiculo.nombre, "Caballito: Combustible restante $combustibleRestante L. Se ha retrasado: $retraso kms. Kms establecidos en 0")
+                } else {
+                    vehiculo.kilometrosActuales -= retraso
+                    registrarAccion(vehiculo.nombre, "Caballito: Combustible restante $combustibleRestante L. Se ha retrasado: $retraso kms.")
+                }
             }
         }
     }
+
 
     /**
      * Actualiza la posición de un vehículo en la carrera, sumando la distancia recorrida en el último tramo
