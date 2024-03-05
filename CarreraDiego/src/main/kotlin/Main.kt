@@ -37,41 +37,11 @@ fun String.espaciosCapit(): String{
  */
 fun main() {
 
-    /*
-        val vehiculos = mutableListOf(
-            Automovil("aurora", "Seat", "Panda", 50f, 50f * 0.1f, 0f, true),
-            Automovil("Boreal m8", "BMW", "M8", 80f, 80f * 0.1f, 0f, false),
-            Motocicleta("Céfiro", "Derbi", "Motoreta", 15f, 15f * 0.1f, 0f, 500),
-            Automovil("Dinamo", "Cintroen", "Sor", 70f, 70f * 0.1f, 0f, true),
-            Automovil("eclipse negro", "Renault", "Espacio", 60f, 60f * 0.1f, 0f, false),
-            Motocicleta("Fénix", "Honda", "Vital", 20f, 20f * 0.1f, 0f, 250)
-        )
-
-
-        val carrera = Carrera("Gran Carrera de Filigranas", 1000f, vehiculos)
-
-        println("\n*** ${carrera.nombreCarrera} ***\n")
-        carrera.iniciarCarrera()
-
-        val resultados = carrera.obtenerResultados()
-
-        println("* Clasificación:\n")
-        resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre} (${it.vehiculo.kilometrosActuales} kms)") }
-
-        println("\n" + resultados.joinToString("\n") { it.toString() })
-
-        println("\n* Historial Detallado:\n")
-        resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre}\n${it.historialAcciones.joinToString("\n")}\n") }
-
-        */
-
     val vehiculos: MutableList<Vehiculo> = mutableListOf()
-
 
     val listaMarcas = listOf("Toyota", "Ford", "Chevrolet", "Honda", "Volkswagen", "BMW", "Mercedes-Benz", "Audi")
     val listaModelos = listOf("Volador", "Galopante", "Nadador", "Pisahuevos", "Estropeao")
     val listaNombres = mutableListOf("") // Se podria haber hecho con mutableSet y cambiando la funcion para comprobar y añadir
-
 
 
     /**
@@ -109,6 +79,7 @@ fun main() {
         listaNombres.add(nombre)
         return nombre
     }
+
 
     /**
     * Genera un vehículo aleatorio y lo agrega a la lista de vehículos.
@@ -158,6 +129,7 @@ fun main() {
         println("Te ha tocado: $vehiculoRandom")
     }
 
+
     // Se pide el numero de participantes
     val numeroParticipantes = pedirParticipantes()
 
@@ -177,9 +149,6 @@ fun main() {
     carrera.iniciarCarrera()
 
     val resultados = carrera.obtenerResultados()
-
-    //println("* Clasificación:\n")
-    //resultados.forEach { println("${it.posicion} -> ${it.vehiculo.nombre} (${it.vehiculo.kilometrosActuales} kms)") }
 
     println("\n" + resultados.joinToString("\n") { it.toString() })
 

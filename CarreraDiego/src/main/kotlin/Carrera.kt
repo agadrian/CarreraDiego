@@ -82,7 +82,7 @@ class Carrera(
             val vehiculoSeleccionado = seleccionaVehiculoQueAvanzara()
             avanzarVehiculo(vehiculoSeleccionado)
 
-            if (rondas % 1 == 0) mostrarClasificacionParcial(rondas)
+            if (rondas % 3 == 0) mostrarClasificacionParcial(rondas)
 
             for (vehiculo in participantes){
                 if (vehiculo.kilometrosActuales < distanciaTotal) vehiculo.avanzarRonda()
